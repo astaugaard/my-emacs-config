@@ -432,6 +432,11 @@ eterm-256color
      (evil-define-key '(normal motion) apropos-mode-map
        (aa/kbdl "cf") 'apropose-follow)
    #+end_src
+** log edit mode
+   #+begin_src emacs-lisp
+     (evil-define-key '(normal motion) log-edit-mode-map
+       (aa/kbdl "cd") 'log-edit-done)
+   #+end_src
 * keybindings
 **  kebinding functions
 *** opening things
@@ -532,6 +537,7 @@ eterm-256color
        (aa/kbdl "os") 'yas-new-snippet
        (aa/kbdl "oa") 'org-agenda
        (aa/kbdl "oc") 'org-capture
+       (aa/kbdl "ov") 'vc-next-action
     #+end_src
 *** window managment
     #+begin_src emacs-lisp
@@ -586,6 +592,7 @@ eterm-256color
        (aa/kbdl "ff") 'ff-find-other-file
        (aa/kbdl "fc") 'kill-buffer
        (aa/kbdl "fo") 'dired-jump
-       (aa/kbdl "m") 'hydra-less/body)
+       (aa/kbdl "l") 'hydra-less/body)
     #+end_src
+    
     
