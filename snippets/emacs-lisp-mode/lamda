@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: lambda
+# key: lam
+# --
+
+(lamda (${1:args})
+       "${2:docstring for lambda}"
+       $0)

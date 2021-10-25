@@ -1,16 +1,15 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp
 
-dracula-theme lsp-ui lsp-ivy evil-nerd-commenter
-realgud realgud-lldb
-
+doom-themes lsp-ui magit
+dap-mode
 
 vterm
 eterm-256color
 * package configuration
   #+begin_src emacs-lisp
     (require 'package)
-
-    (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+  
+    (setq package-archives '(("melpa" . "https://stable.melpa.org/packages/")
 			     ("elpa" . "https://elpa.gnu.org/packages/")))
 
     (setq package-archive-priorities '(("elpa" . 20)
@@ -114,6 +113,8 @@ eterm-256color
 	 "SPC o" "open"
 	 "SPC w" "windows"
 	 "SPC f" "files"
+	 "SPC m" "make"
+	 "SPC q" "quick toggle"
 	 "SPC c" "current-mode")
        :diminish which-key-mode) ;; shows keybindings
    #+end_src
@@ -166,6 +167,8 @@ eterm-256color
 	      ("C-n" . ivy-previous-line)
 	      ("C-d" . ivy-reverse-i-search-kill))
        :config
+       (setq ivy-initial-inputs-alist nil)
+       (setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
        (ivy-mode 1))
 
    #+end_src
@@ -192,7 +195,6 @@ eterm-256color
    #+end_src
 ** files
    #+begin_src emacs-lisp
-
      (setq indent-tabs-mode nil)
      (setq make-backup-files nil)
    #+end_src
@@ -584,15 +586,19 @@ eterm-256color
       (aa/kbdl "mc") 'compile
       (aa/kbdl "mn") 'next-error
     #+end_src
+*** quick toggles
+    #+begin_src emacs-lisp
+      (aa/kbdl "qw") 'whitespace-mode
+    #+end_src
 *** file managment
     #+begin_src emacs-lisp
-       (aa/kbdl "fa") 'rename-file
-       (aa/kbdl "fs") 'save-buffer
-       (aa/kbdl "fr") 'undo-redo
-       (aa/kbdl "ff") 'ff-find-other-file
-       (aa/kbdl "fc") 'kill-buffer
-       (aa/kbdl "fo") 'dired-jump
-       (aa/kbdl "l") 'hydra-less/body)
+      (aa/kbdl "fa") 'rename-file
+      (aa/kbdl "fs") 'save-buffer
+      (aa/kbdl "fr") 'undo-redo
+      (aa/kbdl "ff") 'ff-find-other-file
+      (aa/kbdl "fc") 'kill-buffer
+      (aa/kbdl "fo") 'dired-jump
+      (aa/kbdl "l") 'hydra-less/body)
     #+end_src
     
     

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: class
+# key: class
+# --
+
+class $2 {
+   /*${3:docstring for $2}*/
+   $0
+   $2() {
+   	
+   }
+};

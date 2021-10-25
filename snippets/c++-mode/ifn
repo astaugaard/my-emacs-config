@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: lock-gaurd
+# key: ifn
+# --
+
+#ifndef ${1:$(aa/ifn-format yas-text)} 
+#define ${1:$(aa/ifn-format yas-text)}
+
+$0
+
+#endif // ${1:dir} `(file-name-nondirectory (buffer-file-name))`

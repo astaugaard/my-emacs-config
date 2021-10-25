@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: message+format
+# key: mesf
+# --
+
+(message "${1:format options" $0)
