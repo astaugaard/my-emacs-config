@@ -1,6 +1,6 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp
 
-doom-themes lsp-ui magit
+magit
 dap-mode
 
 vterm
@@ -87,6 +87,11 @@ eterm-256color
    #+end_src
    
 * UI config
+** doom themes
+   #+begin_src emacs-lisp
+     (use-package doom-themes)
+   #+end_src
+** emacs stuff
   #+begin_src emacs-lisp
     (setq inhibit-startup-message t)
     (setq visible-bell t)
@@ -94,8 +99,8 @@ eterm-256color
     (menu-bar-mode -1)
     (scroll-bar-mode -1)
     (set-fringe-mode 10)
-    (set-face-attribute 'default nil :font "monaco")
-    (load-theme 'my-theme t)
+    (set-face-attribute 'default nil :font "Droid Sans Mono Slashed for Powerline 12")
+    (load-theme 'doom-dracula t)
     (blink-cursor-mode -1)
     (column-number-mode)
     (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -220,6 +225,11 @@ eterm-256color
 	 (lsp-enable-which-key-integration t))
 
    #+end_src
+*** lsp-ui
+    #+begin_src emacs-lisp
+      (use-package lsp-ui)
+                    
+    #+end_src
 *** header breadcrumb
     #+begin_src emacs-lisp
     #+end_src
@@ -232,6 +242,8 @@ eterm-256color
        (yas-global-mode 1))
      ;;  (add-hook 'yas-minor-mode-hook (lambda ()
      ;;				   (yas-activate-extra-mode 'fundemental-mode)))
+     (add-hook 'company-mode-hook (lambda ()
+                                          (evil-define-key '(insert) company-active-map (kbd "SPC") yas-expand)))
    #+end_src
    
 *** helper functions
@@ -408,6 +420,11 @@ eterm-256color
      (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
      (add-to-list 'org-structure-template-alist '("py" . "src python"))
     #+end_src
+** magit
+   #+begin_src emacs-lisp
+(use-package magit)
+   #+end_src
+
 ** info mode
    #+begin_src emacs-lisp
      (evil-define-key '(normal motion) Info-mode-map (aa/kbdl "co") 'Info-follow-nearest-node)
@@ -439,6 +456,7 @@ eterm-256color
      (evil-define-key '(normal motion) log-edit-mode-map
        (aa/kbdl "cd") 'log-edit-done)
    #+end_src
+
 * keybindings
 **  kebinding functions
 *** opening things
@@ -600,5 +618,6 @@ eterm-256color
       (aa/kbdl "fo") 'dired-jump
       (aa/kbdl "l") 'hydra-less/body)
     #+end_src
+    
     
     

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: for-it
+# key: <fi
+# --
+
+for (int $1 = 0; $1 < $2.size(); $1++) {
+    $0
+}

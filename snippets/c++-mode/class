@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: class 
+# key: <c
+# --
+
+class ${1:name} {
+  /* ${2:docstring for $1} */
+
+  ${3:values}
+
+  // ${5:constructer docstring}
+  $1(${4:input args}) {
+    $0
+  }
+};

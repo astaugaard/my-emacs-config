@@ -68,14 +68,16 @@
 
 (use-package hydra) ;; another way to make keybindings
 
+(use-package doom-themes)
+
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-fringe-mode 10)
-(set-face-attribute 'default nil :font "monaco")
-(load-theme 'my-theme t)
+(set-face-attribute 'default nil :font "Droid Sans Mono Slashed for Powerline 12")
+(load-theme 'doom-dracula t)
 (blink-cursor-mode -1)
 (column-number-mode)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
@@ -175,6 +177,8 @@
      :config
     (lsp-enable-which-key-integration t))
 
+(use-package lsp-ui)
+
 
 
 (use-package yasnippet
@@ -183,6 +187,8 @@
   (yas-global-mode 1))
 ;;  (add-hook 'yas-minor-mode-hook (lambda ()
 ;;				   (yas-activate-extra-mode 'fundemental-mode)))
+(add-hook 'company-mode-hook (lambda ()
+                                     (evil-define-key '(insert) company-active-map (kbd "SPC") yas-expand)))
 
 ;; convert to upper
 (defun aa/ifn-format (str)
@@ -311,6 +317,8 @@
 (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
+
+(use-package magit)
 
 (evil-define-key '(normal motion) Info-mode-map (aa/kbdl "co") 'Info-follow-nearest-node)
 
@@ -467,3 +475,16 @@ _k_: + textS
 (aa/kbdl "fc") 'kill-buffer
 (aa/kbdl "fo") 'dired-jump
 (aa/kbdl "l") 'hydra-less/body)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(magit yasnippet which-key use-package lsp-ui hydra evil-collection doom-themes counsel company ace-window)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

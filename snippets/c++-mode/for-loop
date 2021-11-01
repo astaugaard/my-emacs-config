@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: for-loop
+# key: <f
+# --
+
+for (auto $1 : $2) {
+    $0
+}
